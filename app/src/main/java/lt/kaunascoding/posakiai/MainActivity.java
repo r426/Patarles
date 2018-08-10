@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rodykSekancia();
+        eikPirmyn();
 
     }
 
@@ -23,52 +23,70 @@ public class MainActivity extends AppCompatActivity {
         eikIPirma();
     }
 
-    public void ankstesnisPuslapis(View view) {
-        System.out.println("eiti i ankstesni elementa array liste");
-        eikAtgal();
-    }
-
-    public void velesnisPuslapis(View view) {
-        System.out.println("eiti i sekanti elementa array liste");
-        rodykSekancia();
-    }
-
     public void paskutinisPuslapis(View view) {
         System.out.println("eiti i paskutini array listo elementa");
         eikIPaskutini();
     }
 
-    public void rodykSekancia(){
+    public void velesnisPuslapis(View view) {
+        System.out.println("eiti i sekanti elementa array liste");
+        eikPirmyn();
+    }
+
+    public void ankstesnisPuslapis(View view) {
+        System.out.println("eiti i ankstesni elementa array liste");
+        eikAtgal();
+    }
+
+    public void bookmarkink(View view){
+        System.out.println("bookmarkina");
+        bookmark();
+    }
+
+    public void sharink(View view){
+        System.out.println("sharina");
+        share();
+    }
+
+
+    public void eikPirmyn() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        String patarle = VisosPatarles.getInstance().getRandom();
-        PatarliuIstorija.getInstance().pridekISarasa(patarle);
-        laukas.setText(patarle);
+        laukas.setText(PatarliuIstorija.getInstance().gaukVelesne());
         puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
     }
 
-    public void eikAtgal(){
+    public void eikAtgal() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
         laukas.setText(PatarliuIstorija.getInstance().gaukAnkstesne());
         puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
-
     }
 
-    public void eikIPaskutini(){
+    public void eikIPaskutini() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
         laukas.setText(PatarliuIstorija.getInstance().gaukPaskutini());
         puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
-
     }
 
-    public void eikIPirma(){
+    public void eikIPirma() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
         laukas.setText(PatarliuIstorija.getInstance().gaukPirma());
         puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
-
     }
 
+    public void bookmark() {
+        TextView laukas = (TextView) findViewById(R.id.laukas);
+        TextView puslapis = (TextView) findViewById(R.id.puslapis);
+        PatarliuIstorija.getInstance().bookmarkink();
+    }
+
+    public void share() {
+        TextView laukas = (TextView) findViewById(R.id.laukas);
+        TextView puslapis = (TextView) findViewById(R.id.puslapis);
+        laukas.setText(PatarliuIstorija.getInstance().sharink());
+        puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
+    }
 }
