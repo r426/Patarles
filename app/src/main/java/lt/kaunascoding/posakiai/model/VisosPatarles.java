@@ -19,10 +19,13 @@ public class VisosPatarles {
     private VisosPatarles() {
         sarasas = new ArrayList<>();
         sarasas.add("...kaip ant juoko");
-        sarasas.add(" žodis – ne darbas");
-        sarasas.add(" žodis tvirtas – darbais paspirtas");
+        sarasas.add("žodis – ne darbas");
+        sarasas.add("žodis tvirtas – darbais paspirtas");
         sarasas.add("žmogaus vertė darbu matuojama");
         sarasas.add("yra darbo, yra ir naudos");
+        sarasas.add("veršenikę į darbą davė");
+        sarasas.add("žiema – keliauninkas, pavasaris – gėlininkas, vasara – dainininkas, ruduo – darbininkas");
+        sarasas.add("vesdamas nežiūrėk ant mergos gražumo, tik žiūrėk ant jos darbštumo ir gerumo");
     }
 
     public String getRandom(){
