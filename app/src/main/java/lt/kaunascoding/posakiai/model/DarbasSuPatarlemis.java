@@ -1,27 +1,34 @@
 package lt.kaunascoding.posakiai.model;
 
+import android.content.Context;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class PatarliuIstorija {
+public class DarbasSuPatarlemis {
 
     private int index = -1;
 
     private ArrayList<String> sarasas;
 
 
-    private static PatarliuIstorija instance = null;
+    private static DarbasSuPatarlemis instance = null;
 
-    public static PatarliuIstorija getInstance() {
+    private Context context;
+
+    public static DarbasSuPatarlemis getInstance() {
         if (instance == null) {
-            instance = new PatarliuIstorija();
+            instance = new DarbasSuPatarlemis();
         }
         return instance;
     }
 
-    private PatarliuIstorija() {
+    private DarbasSuPatarlemis() {
         sarasas = new ArrayList<>();
     }
 
@@ -46,7 +53,7 @@ public class PatarliuIstorija {
         index++;
         if (index == sarasas.size()) {
             String patarle = VisosPatarles.getInstance().getRandom();
-            PatarliuIstorija.getInstance().pridekISarasa(patarle);
+            DarbasSuPatarlemis.getInstance().pridekISarasa(patarle);
         }
         return sarasas.get(index);
     }
@@ -65,37 +72,56 @@ public class PatarliuIstorija {
 
         String failoVardas = "bookmarks.txt";
         FileWriter writer = null;
-        File file = new File(failoVardas);
+        File file = new File(context.getFilesDir(), failoVardas);
         try {
-            writer = new FileWriter(failoVardas, true);//faile neištrina buvusios informacijos
+            writer = new FileWriter(file, true);//faile neištrina buvusios informacijos
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String prefix = "";
+        String prefix = "\n";
 
         if (writer != null) {
             try {
-                writer.write(prefix + sarasas.get(index));
+                writer.write(sarasas.get(index) + prefix);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
-        prefix = "\n";
-
         try {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public String sharink() {
         String string = "";
         return string;
-
     }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    ArrayList<String> bookmarkSarasas = null;
+
+    public void skaitykBookmarks() {
+
+       bookmarkSarasas = new ArrayList<>();
+        String failoVardas = "bookmarks.txt";
+        File file = new File(context.getFilesDir(), failoVardas);
+        try {
+            FileReader reader = new FileReader(file);
+            Scanner sc = new Scanner(reader);
+
+            while (sc.hasNext()) {
+                String eilute =sc.nextLine();
+                System.out.println(eilute);
+                bookmarkSarasas.add(eilute);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

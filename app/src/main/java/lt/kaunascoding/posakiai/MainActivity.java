@@ -1,12 +1,12 @@
 package lt.kaunascoding.posakiai;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import lt.kaunascoding.posakiai.model.PatarliuIstorija;
-import lt.kaunascoding.posakiai.model.VisosPatarles;
+import lt.kaunascoding.posakiai.model.DarbasSuPatarlemis;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DarbasSuPatarlemis.getInstance().setContext(this);
         eikPirmyn();
 
     }
@@ -52,41 +53,47 @@ public class MainActivity extends AppCompatActivity {
     public void eikPirmyn() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        laukas.setText(PatarliuIstorija.getInstance().gaukVelesne());
-        puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
+        laukas.setText(DarbasSuPatarlemis.getInstance().gaukVelesne());
+        puslapis.setText(DarbasSuPatarlemis.getInstance().gaukPuslapi());
     }
 
     public void eikAtgal() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        laukas.setText(PatarliuIstorija.getInstance().gaukAnkstesne());
-        puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
+        laukas.setText(DarbasSuPatarlemis.getInstance().gaukAnkstesne());
+        puslapis.setText(DarbasSuPatarlemis.getInstance().gaukPuslapi());
     }
 
     public void eikIPaskutini() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        laukas.setText(PatarliuIstorija.getInstance().gaukPaskutini());
-        puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
+        laukas.setText(DarbasSuPatarlemis.getInstance().gaukPaskutini());
+        puslapis.setText(DarbasSuPatarlemis.getInstance().gaukPuslapi());
     }
 
     public void eikIPirma() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        laukas.setText(PatarliuIstorija.getInstance().gaukPirma());
-        puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
+        laukas.setText(DarbasSuPatarlemis.getInstance().gaukPirma());
+        puslapis.setText(DarbasSuPatarlemis.getInstance().gaukPuslapi());
     }
 
     public void bookmark() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        PatarliuIstorija.getInstance().bookmarkink();
+
+        DarbasSuPatarlemis.getInstance().bookmarkink();
+    }
+
+    public void showBookmarks(View view) {
+        Intent intent = new Intent(this, PatarliuIstorijaActivity.class);
+        startActivity(intent);
     }
 
     public void share() {
         TextView laukas = (TextView) findViewById(R.id.laukas);
         TextView puslapis = (TextView) findViewById(R.id.puslapis);
-        laukas.setText(PatarliuIstorija.getInstance().sharink());
-        puslapis.setText(PatarliuIstorija.getInstance().gaukPuslapi());
+        laukas.setText(DarbasSuPatarlemis.getInstance().sharink());
+        puslapis.setText(DarbasSuPatarlemis.getInstance().gaukPuslapi());
     }
 }
