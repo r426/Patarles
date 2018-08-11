@@ -7,7 +7,7 @@
     android:padding="10dp"
     android:textColor="#008080"
     android:textSize="16dp"
-    android:textStyle="normal"
-    android:focusable="false">
+    android:textStyle="normal">
+
 
 </TextView>
