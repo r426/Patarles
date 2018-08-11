@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ArrayAdapter;
+
 
 import lt.kaunascoding.posakiai.model.DarbasSuPatarlemis;
 
@@ -14,10 +16,14 @@ public class PatarliuIstorijaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patarliu_istorija);
-        ListView list_view = (ListView) findViewById(R.id.list_view);
 
 
-        DarbasSuPatarlemis.getInstance().skaitykBookmarks();
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,
+                R.layout.activity_listview, DarbasSuPatarlemis.getInstance().skaitykBookmarks());
+
+
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
     }
 
 
