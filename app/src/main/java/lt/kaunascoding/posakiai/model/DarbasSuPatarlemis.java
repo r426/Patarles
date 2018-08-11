@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class DarbasSuPatarlemis {
@@ -106,9 +107,9 @@ public class DarbasSuPatarlemis {
 
     ArrayList<String> bookmarkSarasas = null;
 
-    public void skaitykBookmarks() {
+    public ArrayList skaitykBookmarks() {
 
-       bookmarkSarasas = new ArrayList<>();
+        bookmarkSarasas = new ArrayList<>();
         String failoVardas = "bookmarks.txt";
         File file = new File(context.getFilesDir(), failoVardas);
         try {
@@ -116,12 +117,15 @@ public class DarbasSuPatarlemis {
             Scanner sc = new Scanner(reader);
 
             while (sc.hasNext()) {
-                String eilute =sc.nextLine();
+                String eilute = sc.nextLine();
                 System.out.println(eilute);
                 bookmarkSarasas.add(eilute);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        Collections.reverse(bookmarkSarasas);
+        return bookmarkSarasas;
+
     }
 }

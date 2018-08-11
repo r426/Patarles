@@ -20,6 +20,7 @@
         android:singleLine="false"
         android:textAlignment="center"
         android:textColor="#008080"
+        android:padding="5dp"
         app:autoSizeMaxTextSize="80dp"
         app:autoSizeMinTextSize="10dp"
         app:autoSizeStepGranularity="1dp"
@@ -36,7 +37,8 @@
             android:layout_height="match_parent"
             android:layout_weight="20"
             android:onClick="bookmarkink"
-            android:src="@drawable/ic_favorite_border_black_24dp" />
+            android:src="@drawable/ic_favorite_border_black_24dp"
+            />
 
         <ImageView
             android:layout_width="1dp"
