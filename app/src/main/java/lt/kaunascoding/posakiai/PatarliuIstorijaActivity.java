@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
 
+import lt.kaunascoding.posakiai.controller.ItemArrayAdapter;
 import lt.kaunascoding.posakiai.model.DarbasSuPatarlemis;
 
 public class PatarliuIstorijaActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class PatarliuIstorijaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patarliu_istorija);
 
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
+        ItemArrayAdapter adapter = new ItemArrayAdapter(this,
                 R.layout.activity_listview, DarbasSuPatarlemis.getInstance().skaitykBookmarks());
 
 
