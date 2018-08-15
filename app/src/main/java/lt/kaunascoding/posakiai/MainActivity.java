@@ -6,16 +6,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.Volley;
+
 import lt.kaunascoding.posakiai.model.DarbasSuPatarlemis;
+import lt.kaunascoding.posakiai.model.VisosPatarles;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static MainActivity instance = null;
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DarbasSuPatarlemis.getInstance().setContext(this);
-        eikPirmyn();
+        MainActivity.instance = this;
+        VisosPatarles.getInstance().setLoadingQue(Volley.newRequestQueue(this));
+        //eikPirmyn();
 
     }
 
@@ -39,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
         eikAtgal();
     }
 
-    public void bookmarkink(View view){
+    public void bookmarkink(View view) {
         System.out.println("bookmarkina");
         bookmark();
     }
 
-    public void sharink(View view){
+    public void sharink(View view) {
         System.out.println("sharina");
         share();
     }
