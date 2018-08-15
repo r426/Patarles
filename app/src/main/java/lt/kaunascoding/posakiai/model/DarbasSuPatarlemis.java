@@ -128,4 +128,37 @@ public class DarbasSuPatarlemis {
         return bookmarkSarasas;
 
     }
+
+    public ArrayList<String> getBookmarks() {
+        return bookmarkSarasas;
+    }
+
+    public void saugokNaujaSarasa() {
+
+        String failoVardas = "bookmarks.txt";
+        FileWriter writer = null;
+        File file = new File(context.getFilesDir(), failoVardas);
+        try {
+            writer = new FileWriter(file, false);//faile ištrina buvusią informaciją
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Collections.reverse(bookmarkSarasas);
+        for (int index = 0; index < bookmarkSarasas.size(); index++) {
+            String prefix = "\n";
+            if (writer != null) {
+                try {
+                    writer.write(bookmarkSarasas.get(index) + prefix);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

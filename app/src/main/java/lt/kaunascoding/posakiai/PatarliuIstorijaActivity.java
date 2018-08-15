@@ -8,6 +8,8 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
 
+import java.util.Collections;
+
 import lt.kaunascoding.posakiai.controller.ItemArrayAdapter;
 import lt.kaunascoding.posakiai.model.DarbasSuPatarlemis;
 
@@ -31,6 +33,7 @@ public class PatarliuIstorijaActivity extends AppCompatActivity {
     public void carryOn(View view) {
 //        Intent intent = new Intent(this, MainActivity.class);
 //        startActivity(intent);
+        DarbasSuPatarlemis.getInstance().saugokNaujaSarasa();
         this.finish();
     }
 }

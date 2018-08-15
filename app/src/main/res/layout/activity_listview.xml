@@ -3,21 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-<TextView
-    android:id="@+id/label"
-    android:layout_width="1dp"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:textColor="#008080"
-    android:textSize="16dp"
-    android:layout_weight="90"
-    android:textStyle="normal">
 
-</TextView>
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="90"
+        android:padding="10dp"
+        android:textColor="#008080"
+        android:textSize="16dp"
+        android:textStyle="normal">
+
+    </TextView>
+
     <Button
+        android:id="@+id/trintiViena"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        />
+        android:background="#fafafa"
+        android:padding="10dp"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:text="X"
+        android:textAlignment="center"
+        android:textColor="#008080"
+        android:textSize="16dp"
+        android:textStyle="normal" />
 
 </LinearLayout>
